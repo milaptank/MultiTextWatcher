@@ -42,38 +42,30 @@ public class MainActivity extends AppCompatActivity implements OnTextWatcher {
 
     @Override
     public void beforeTextChanged(EditText editText, CharSequence s, int start, int count, int after) {
-
-
         switch (editText.getId()) {
             case R.id.etMainEmail:
                 // TODO: your task
                 break;
-
         }
-
         Log.i(TAG, "beforeTextChanged: " + s + "Hint--" + editText.getHint());
     }
 
     @Override
     public void onTextChanged(EditText editText, CharSequence s, int start, int before, int count) {
-
         switch (editText.getId()) {
             case R.id.etMainEmail:
                 // TODO: your task
                 break;
-
         }
         Log.i(TAG, "onTextChanged: " + s + "Hint--" + editText.getHint());
     }
 
     @Override
     public void afterTextChanged(EditText editText, Editable editable) {
-
         switch (editText.getId()) {
             case R.id.etMainEmail:
                 // TODO: your task
                 break;
-
         }
         Log.i(TAG, "afterTextChanged: " + editable.toString() + "Hint--" + editText.getHint());
     }
