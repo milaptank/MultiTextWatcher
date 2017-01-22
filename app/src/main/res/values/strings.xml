@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">MultiTextWatcher</string>
+    <string name="app_name">MultiTextWatcherDemo</string>
+    <string name="hint_enter_text">Enter Text</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_phone_number">Phone Number</string>
+    <string name="hint_email_id">Email Id</string>
 </resources>
