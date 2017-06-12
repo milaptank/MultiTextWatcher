@@ -1,5 +1,6 @@
 # MultiTextWatcher
 Add multiple `TextWatcher` on multiple `Editext` and recive callback at one place
+
 [ ![Download](https://api.bintray.com/packages/milaptank/MultiTextWatcher/MultiTextWatcher/images/download.svg) ](https://bintray.com/milaptank/MultiTextWatcher/MultiTextWatcher/_latestVersion)
 
 Usage
