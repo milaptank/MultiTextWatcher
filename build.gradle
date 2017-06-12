@@ -5,19 +5,66 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.2'
-
+        classpath 'com.android.tools.build:gradle:2.3.2'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
+plugins {
+    id "com.jfrog.bintray" version "1.7.3"
+}
+group = 'bintray-milaptank-MultiTextWatcher'
+version = '1.0'
+allprojects {
+    repositories {
+        jcenter()
+    }
+    apply plugin: 'maven'
+    apply plugin: 'maven-publish'
+}
+
+publishing {
+    publications {
+        MultiTextWatcherPub(MavenPublication) {
+            groupId 'bintray-milaptank-MultiTextWatcher'
+            artifactId 'multitextwatcher'
+            version '1.0'
+        }
+    }
+}
+bintray {
+    user = BINTRAY_USER
+    key = BINTRAY_KEY
+    publications = ['MultiTextWatcherPub']
+    pkg {
+        repo = 'MultiTextWatcher'
+        name = 'MultiTextWatcher'
+        userOrg = 'milaptank'
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/milaptank/MultiTextWatcher.git'
+        publicDownloadNumbers = true
+        labels = ['listener', 'edittext',
+                  ' android',
+                  'multiple',
+                  'textwatcher']
+        version {
+            name = '1.0'
+            desc = 'Add multiple TextWatcher on multiple Editext and receive callback at one place'
+            released = new Date()
+            vcsTag = '1.3.0'
+            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
+        }
+    }
+}
+
+
 
 allprojects {
     repositories {
         jcenter()
     }
 }
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.4'
 }
+
