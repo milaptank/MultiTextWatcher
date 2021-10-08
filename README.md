@@ -1,44 +1,60 @@
 # MultiTextWatcher
-Add multiple `TextWatcher` on multiple `Editext` and recive callback at one place
+Add multiple `TextWatcher` on multiple `Editext` and receive callback at one place
 
 
 Usage
 --------
-```java
-public class MainActivity extends AppCompatActivity implements OnTextWatcher {
- private static final String TAG = "MultiTextWatcher";
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        EditText etName = (EditText) findViewById(R.id.etMainName);
-        EditText etEmail = (EditText) findViewById(R.id.etMainEmail);
-        new MultiTextWatcher()
-                .setEditText(etEmail)
-                .setOnTextWatcher(this);
-        new MultiTextWatcher()
-                .setEditText(etName)
-                .setOnTextWatcher(this);
-    }
+```kotlin
+class MainActivity : AppCompatActivity(), OnTextWatcher {
 
-    @Override
-    public void beforeTextChanged(EditText editText, CharSequence s, int start, int count, int after) {
-        Log.i(TAG, "beforeTextChanged: " + s + "Hint--" + editText.getHint());
-    }
-    @Override
-    public void onTextChanged(EditText editText, CharSequence s, int start, int before, int count){
-        switch (editText.getId()) {
-            case R.id.etMainEmail:
-                // TODO: your task
-                break;
+      override fun onCreate(savedInstanceState: Bundle?) { 
+      super.onCreate(savedInstanceState)
+      setContentView(R.layout.activity_main)
+
+        val etName: EditText = findViewById<View>(R.id.etMainName) as EditText
+        val etEmail: EditText = findViewById<View>(R.id.etMainEmail) as EditText
+        val etPassword: EditText = findViewById<View>(R.id.etMainPassword) as EditText
+        val etPhone: EditText = findViewById<View>(R.id.etMainPhone) as EditText
+
+
+            MultiTextWatcher(etName).setOnTextWatcher(this)
+            MultiTextWatcher(etEmail).setOnTextWatcher(this)
+            MultiTextWatcher(etPassword).setOnTextWatcher(this)
+            MultiTextWatcher(etPhone).setOnTextWatcher(this)
+      }
+
+        override fun beforeTextChanged(
+            editText: EditText,
+            s: CharSequence,
+            start: Int,
+            count: Int,
+            after: Int
+        ) {
+            when (editText.id) {
+                R.id.etMainEmail -> {
+                }
+            }
+                 Log.i(TAG, "beforeTextChanged: " + s.toString() + "Hint--" + editText.hint)
         }
-        Log.i(TAG, "onTextChanged: " + s + "Hint--" + editText.getHint());
-    }
 
-    @Override
-    public void afterTextChanged(EditText editText, Editable editable){
-        Log.i(TAG, "afterTextChanged: " + editable.toString() + "Hint--" + editText.getHint());
-    }
+        override fun onTextChanged(
+            editText: EditText,
+            s: CharSequence,
+            start: Int,
+            before: Int,
+            count: Int
+        ) {
+                TODO("Not yet implemented")
+        }
+
+        override fun afterTextChanged(editText: EditText, editable: Editable) {
+                TODO("Not yet implemented")
+        }
+
+
+        companion object{
+            private const val TAG: String = "MultiTextWatcher"
+        }
 }
 ```
 License
